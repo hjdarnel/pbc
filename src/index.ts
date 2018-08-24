@@ -25,44 +25,33 @@ interface IResponse {
     response_type: string;
     attachments?: [
         {
-            title?: string;
+            fallback: string;
+            color?: string;
+            pretext?: string;
+            author_name?: string;
+            author_link?: string;
+            author_icon?: string;
+            title: string;
+            title_link: string;
+            text?: string;
             fields?: [
                 {
-                    title?: string;
-                    value?: string;
-                    short?: boolean;
+                    title: string;
+                    value: string;
+                    short: boolean;
                 }
             ];
-            author_name?: string;
-            author_icon?: string;
             image_url?: string;
-        },
-        {
-            fallback?: string;
-            title?: string;
-            callback_id?: string;
-            color?: string;
-            attachment_type?: string;
-            actions?: [
-                {
-                    name?: string;
-                    text?: string;
-                    type?: string;
-                    value?: string;
-                },
-                {
-                    name?: string;
-                    text?: string;
-                    type?: string;
-                    value?: string;
-                }
-            ];
+            thumb_url?: string;
+            footer?: string;
+            footer_icon?: string;
+            ts: number;
         }
     ];
 }
 
 const respond = async (req: any, res: any) => {
-    const body = await qs.parse(await text(req));
+    const body: IRequest = await qs.parse(await text(req));
 
     logger.debug(body);
 
@@ -88,6 +77,9 @@ const respond = async (req: any, res: any) => {
 };
 
 const getBeers = async (location: string, responseUrl: string): Promise<request.RequestPromise> => {
+    // TODO: Get beers from location
+
+    // TODO: Format into a nice list
     const response: IResponse = {
         response_type: 'in_channel',
         text: location + '!!'
@@ -95,9 +87,7 @@ const getBeers = async (location: string, responseUrl: string): Promise<request.
 
     return request.post({
         url: responseUrl,
-        headers: {
-            'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: response,
         json: true
     });
