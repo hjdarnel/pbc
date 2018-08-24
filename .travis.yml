@@ -14,8 +14,9 @@ install:
   - npm run build
   - npm run lint
 
-script: true
-
-after_success:
+script:
+  - npm prune --production
   - travis_retry docker build -t $DOCKER_USERNAME/$SERVICE:$TRAVIS_BRANCH -f ./docker/Dockerfile .
   - travis_retry docker push $DOCKER_USERNAME/$SERVICE:$TRAVIS_BRANCH
+
+after_success: true
