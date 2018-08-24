@@ -2,7 +2,7 @@
   "name": "slash-command",
   "scripts": {
     "start:dev": "npm install && nodemon -x 'npm run build && npm start | bunyan -o short -l debug' --watch src/ -L -e ts",
-    "start": "micro bin/index.js",
+    "start": "micro -l tcp://0.0.0.0:3001 bin/index.js",
     "build": "tsc"
   },
   "dependencies": {
