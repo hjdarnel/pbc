@@ -13,8 +13,7 @@
     "micro": "9.3.3",
     "query-string": "6.1.0",
     "request": "2.88.0",
-    "request-promise-native": "1.0.5",
-    "url": "0.11.0"
+    "request-promise-native": "1.0.5"
   },
   "devDependencies": {
     "@types/bunyan": "1.8.4",
