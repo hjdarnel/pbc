@@ -10,6 +10,7 @@ services:
 
 install:
   - travis_retry docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - npm ci .
   - npm run build
   - npm run lint
 
