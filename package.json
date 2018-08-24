@@ -1,5 +1,7 @@
 {
-  "name": "slash-command",
+  "name": "pbc",
+  "repository": "hjdarnel/pbc",
+  "license": "MIT",
   "scripts": {
     "start:dev": "npm install && nodemon -x 'npm run build && npm start | bunyan -o short -l debug' --watch src/ -L -e ts",
     "start": "micro -l tcp://0.0.0.0:3001 bin/index.js",
